@@ -1,0 +1,15 @@
+@import "./globalStyles/global_styles.scss";
+
+body {
+  font-family: $standard-font-family; /* Replace with your desired font */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure all elements inherit the font */
+* {
+  font-family: inherit;
+  box-sizing: inherit;
+}

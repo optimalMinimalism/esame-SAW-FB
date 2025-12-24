@@ -1,0 +1,23 @@
+@import "../../globalStyles/global_styles.scss";
+
+.cit-box {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center !important;
+  gap: 0.5em;
+
+  color: #fff;
+  border: 1px solid #fff;
+
+  .cit-text {
+  }
+
+  .cit-ref {
+    margin-left: auto !important;
+    margin-right: 1em !important;
+  }
+}

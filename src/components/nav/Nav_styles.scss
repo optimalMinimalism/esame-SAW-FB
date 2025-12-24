@@ -1,0 +1,43 @@
+@import "../../globalStyles/global_styles.scss";
+
+nav {
+  box-sizing: border-box;
+  width: 100%;
+  height: $nav-height;
+
+  margin-top: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(65, 93, 67, 0.8);
+  border-bottom: 1px solid #000000;
+
+  .nav-button {
+    height: 100%;
+    margin: 0 1em;
+
+    font-size: 1.5em;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  .about-button {
+    font-size: 1.5em;
+  }
+
+  //NAV STYLES FOR SMALLER SCREENS
+  @media (max-width: 900px) {
+    /* Your styles for screens smaller than 570px go here */
+    font-size: 0.7em;
+    flex-direction: column;
+    gap: 0.5em;
+    height: auto;
+    padding: 0.5em;
+    .nav-button {
+      border-bottom: solid 1px white;
+    }
+  }
+}

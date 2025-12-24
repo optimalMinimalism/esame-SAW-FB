@@ -1,0 +1,60 @@
+@import "../../../../globalStyles/global_styles.scss";
+
+.about-root {
+  //background section
+  background-color: black;
+  background-image: url("../../../../assets/martin-luther-at-the-diet-of-worms-1521.jpg");
+  background-repeat: repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+
+  .about-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
+    .content-box {
+      width: 70%;
+      padding: 1.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      background-color: $secondary-color-transparent;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      color: white;
+      font-size: 1.5em;
+
+      h1 {
+        margin: 0 0 0.5em 0;
+        font-size: 2.5em;
+      }
+
+      p {
+        text-align: left;
+        margin: 0.5em 0;
+      }
+
+      img {
+        width: 90%;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-container {
+      .content-box {
+        width: 90%;
+      }
+    }
+    h1 {
+      font-size: 2em;
+    }
+  }
+}

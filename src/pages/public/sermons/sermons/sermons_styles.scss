@@ -1,0 +1,138 @@
+@import "../../../../globalStyles/global_styles.scss";
+
+.sermons-root {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+
+  //background section
+  background-color: black;
+  background-image: url("../../../../assets/sermon.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-position-y: 20%;
+
+  .sermons-container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .content-box {
+      width: 70%;
+      min-height: 25em;
+
+      padding: 2em;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      background-color: $secondary-color-transparent;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      color: white;
+
+      .sermon-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        // max-height: 80vh; /* Set max height (adjust as needed) */
+        // overflow-y: auto; /* Enables vertical scrolling when content overflows */
+        padding-right: 10px; /* Optional: gives space for the scrollbar */
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .sermon-link {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1em;
+
+        h2 {
+          margin: 0;
+          font-size: 1.5em;
+        }
+      }
+
+      .loading-spinner {
+        margin-top: 1em;
+        p {
+          font-size: 1.5em;
+          margin: 0;
+        }
+      }
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      color: black;
+
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        background-color: #eee;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .sermons-container {
+      .content-box {
+        width: 90%;
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    background-position-x: 40%;
+
+    .sermons-container {
+      .content-box {
+        h1 {
+          font-size: 2em;
+        }
+
+        .sermon-link {
+          h2 {
+            font-size: 1.1em;
+          }
+        }
+      }
+
+      .carousel-controls {
+        button {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 350px) {
+    background-position-x: 40%;
+  }
+}

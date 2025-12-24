@@ -1,0 +1,34 @@
+// @import url("https://fonts.googleapis.com/css2?family=Jaini+Purva&display=swap");
+@font-face {
+  font-family: "Jaini Purva";
+  src: url("../../assets/font/Jaini_Purva/JainiPurva-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+//**fonts
+$standard-font-family: "Jaini Purva", sans-serif;
+
+//**colors
+$primary-color: #111d13;
+$secondary-color: #415d43;
+$secondary-color-transparent: rgba(65, 93, 67, 0.8);
+$evident-color: #a1cca5;
+$stealth-color: #709775;
+
+//**measurements
+
+//header
+$header-height: 6em;
+$header-padding: 10px; //?just an idea
+
+//nav
+$nav-height: 2.1em;
+//footer
+$footer-height: 6em;
+$footer-padding: 10px; //?just an idea
+
+//content
+$content-margin: 1em;
