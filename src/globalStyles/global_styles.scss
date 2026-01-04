@@ -1,12 +1,12 @@
 // @import url("https://fonts.googleapis.com/css2?family=Jaini+Purva&display=swap");
 @font-face {
   font-family: "Jaini Purva";
-  src: url("../../assets/font/Jaini_Purva/JainiPurva-Regular.ttf")
-    format("truetype");
+  src: url("/assets/font/JainiPurva-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
 
 //**fonts
 $standard-font-family: "Jaini Purva", sans-serif;

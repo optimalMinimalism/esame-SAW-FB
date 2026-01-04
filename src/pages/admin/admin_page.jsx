@@ -55,7 +55,7 @@ function Admin_page({ language, setLanguage }) {
             </li>
           </ul>
 
-          <button onClick={logout}>{t.logout}</button>
+          <button className="logout-button" onClick={logout}>{t.logout}</button>
         </div>
       </div>
 

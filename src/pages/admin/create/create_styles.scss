@@ -74,5 +74,9 @@
 }
 
 .back-button {
-  margin: 20px 400px;
+  width: 50% !important;
+  padding: 0.4rem 1rem;
+  display: inline-block;
+  align-self: center; /* keeps it visually centered in admin-flex */
+
 }
