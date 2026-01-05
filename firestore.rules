@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isPastor() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "pastor";
+    }
+
+    match /events/{doc} {
+      allow read: if true;
+      allow create, update, delete: if isPastor();
+    }
+
+    match /sermons/{doc} {
+      allow read: if true;
+      allow create, update, delete: if isPastor();
+    }
+
+    match /users/{uid} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /pushTokens/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
+    match /contactMessages/{doc} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null &&
+        request.auth.uid == resource.data.pastorId;
+    }
+  }
+}

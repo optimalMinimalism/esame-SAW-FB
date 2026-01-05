@@ -62,18 +62,21 @@ const AdminMessages = ({ language, setLanguage }) => {
       try {
         const q = query(
           collection(db, "contactMessages"),
-          where("pastorId", "==", user.uid),
-          orderBy("createdAt", "desc")
+          where("pastorId", "==", user.uid)
         );
 
         const snap = await getDocs(q);
 
-        setMessages(
-          snap.docs.map((d) => ({
-            id: d.id,
-            ...d.data()
-          }))
-        );
+        const data = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+
+        data.sort((a, b) => {
+          const ta = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+          const tb = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+          return tb - ta;
+        });
+
+        setMessages(data);
+
       } catch (err) {
         console.error("Failed to fetch messages:", err);
       } finally {

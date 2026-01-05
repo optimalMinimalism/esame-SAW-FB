@@ -1,5 +1,7 @@
 # Chiesa Luterana Confessionale d’Italia – Web Application
 
+*Hosting URL*: https://esame-saw-bertolucci.web.app
+
 Questo progetto è una web application sviluppata come elaborato per l’esame di Sviluppo di Applicazioni Web (SAW).
 
 L’applicazione fornisce un sito pubblico informativo e un pannello di amministrazione riservato ai pastori, con supporto ad autenticazione, database cloud, notifiche push e funzionalità Progressive Web App (PWA).
