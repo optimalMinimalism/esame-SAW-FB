@@ -11,6 +11,8 @@ L’applicazione fornisce un sito pubblico informativo e un pannello di amminist
 ### Area pubblica
 L’area pubblica è accessibile senza autenticazione e consente la visualizzazione dei contenuti informativi del sito, inclusi i sermoni e gli eventi. È presente un modulo di contatto che permette agli utenti di inviare messaggi ai pastori.
 
+#### per inviare un messaggio: Rev. John (unica opzione) invia un messaggio all'account di testing
+
 L’applicazione supporta la visualizzazione multilingua (italiano e inglese).
 
 ### Area amministrativa
@@ -22,6 +24,8 @@ L’area amministrativa è accessibile esclusivamente agli utenti autenticati co
 - eliminare i messaggi ricevuti
 
 Le rotte amministrative sono protette tramite un meccanismo di guard basato sull’autenticazione Firebase.
+
+#### PER ACCEDERE -> LOGIN:  pastor@test.com , PASSWORD: test123
 
 ## Autenticazione e autorizzazione
 
@@ -75,6 +79,11 @@ Sono presenti:
 La verifica delle funzionalità PWA va effettuata sulla build di produzione.
 
 ## Avvio del progetto
+
+Dopo aver clonato il repository, è necessario creare un file .env locale a partire dal file di esempio fornito:
+
+*cp .env.example .env*
+
 
 Installazione delle dipendenze:
 ```bash
