@@ -1,99 +1,113 @@
-<div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Chiesa Luterana" />
+# Chiesa Luterana Confessionale d’Italia – Web Application
 
-&#xa0;
+Questo progetto è una web application sviluppata come elaborato per l’esame di Sviluppo di Applicazioni Web (SAW).
 
-  <!-- <a href="https://chiesaluterana.netlify.app">Demo</a> -->
-</div>
+L’applicazione fornisce un sito pubblico informativo e un pannello di amministrazione riservato ai pastori, con supporto ad autenticazione, database cloud, notifiche push e funzionalità Progressive Web App (PWA).
 
-<h1 align="center">Chiesa Luterana</h1>
+## Funzionalità principali
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8">
+### Area pubblica
+L’area pubblica è accessibile senza autenticazione e consente la visualizzazione dei contenuti informativi del sito, inclusi i sermoni e gli eventi. È presente un modulo di contatto che permette agli utenti di inviare messaggi ai pastori.
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8">
+L’applicazione supporta la visualizzazione multilingua (italiano e inglese).
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8">
+### Area amministrativa
+L’area amministrativa è accessibile esclusivamente agli utenti autenticati con ruolo di pastore. Tramite il pannello di amministrazione è possibile:
+- creare, modificare ed eliminare sermoni
+- creare, modificare ed eliminare eventi
+- visualizzare i messaggi ricevuti tramite il modulo di contatto
+- gestire lo stato dei messaggi (letti/non letti)
+- eliminare i messaggi ricevuti
 
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8">
+Le rotte amministrative sono protette tramite un meccanismo di guard basato sull’autenticazione Firebase.
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8" /> -->
+## Autenticazione e autorizzazione
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8" /> -->
+L’autenticazione è gestita tramite Firebase Authentication.
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana?color=56BEB8" /> -->
-</p>
+Il ruolo dell’utente è memorizzato nella collezione `users` su Firestore. Solo gli utenti con ruolo `pastor` possono accedere alle funzionalità di amministrazione.
 
-<!-- Status -->
+Le regole di sicurezza Firestore garantiscono che:
+- solo i pastori possano creare, modificare o eliminare eventi e sermoni
+- i messaggi di contatto siano leggibili e modificabili esclusivamente dal pastore destinatario
+- gli utenti non autenticati possano inviare messaggi tramite il form di contatto
 
-<!-- <h4 align="center">
-	🚧  Chiesa Luterana 🚀 Under construction...  🚧
-</h4>
+## Database
 
-<hr> -->
+Il database è implementato tramite Firebase Firestore.
 
-<p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
-</p>
+Collezioni utilizzate:
+- users
+- sermons
+- events
+- contactMessages
+- pushTokens
 
-<br>
+Le regole di sicurezza sono definite nel file `firestore.rules` e distribuite tramite Firebase.
 
-## :dart: About
+## Newsletter e notifiche push
 
-Describe your project
+L’applicazione include una funzionalità di newsletter basata su notifiche push web.
 
-## :sparkles: Features
+La newsletter è accessibile a tutti gli utenti, anche senza autenticazione. L’iscrizione avviene esclusivamente tramite azione esplicita dell’utente, nel rispetto delle policy del browser.
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+Il funzionamento è il seguente:
+- l’utente clicca sul pulsante Newsletter nel footer
+- il browser richiede il consenso per le notifiche
+- in caso di consenso, il token Firebase Cloud Messaging viene salvato nella collezione `pushTokens`
+- se l’utente risulta già iscritto, l’app evita la registrazione duplicata
 
-## :rocket: Technologies
+La funzionalità è implementata tramite Firebase Cloud Messaging ed è predisposta per future estensioni.
 
-The following tools were used in this project:
+## Progressive Web App
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+L’applicazione è implementata come Progressive Web App.
 
-## :white_check_mark: Requirements
+Sono presenti:
+- Web App Manifest
+- Service Worker generato tramite vite-plugin-pwa
+- supporto all’installazione su desktop e dispositivi mobili
+- navigazione offline con fallback
+- aggiornamento automatico del Service Worker
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+La verifica delle funzionalità PWA va effettuata sulla build di produzione.
 
-## :checkered_flag: Starting
+## Avvio del progetto
 
+Installazione delle dipendenze:
 ```bash
-# Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/chiesa-luterana
+npm install
 
-# Access
-$ cd chiesa-luterana
+## Avvio in modalità sviluppo:
 
-# Install dependencies
-$ yarn
+npm run dev
 
-# Run the project
-$ yarn start
 
-# The server will initialize in the <http://localhost:3000>
-```
+## Build e preview di produzione:
 
-## :memo: License
+npm run build
+npm run preview
 
-This project is under license from CLCI. For more details, see the [LICENSE](LICENSE.md) file.
+## Deploy
 
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+Il progetto è configurato per il deploy tramite Firebase Hosting:
 
-&#xa0;
+firebase deploy
 
-<a href="#top">Back to top</a>
+## Tecnologie utilizzate
 
-<!-- TODO : update this README.md --!>
+- React
+
+- Vite
+
+- Firebase Authentication
+
+- Firebase Firestore
+
+- Firebase Cloud Messaging
+
+- vite-plugin-pwa
+
+- React Router
+
+- SCSS
