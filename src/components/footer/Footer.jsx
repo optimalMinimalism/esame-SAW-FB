@@ -18,6 +18,7 @@ import { registerPushAnonymous } from "../../utils/registerPush.js";
 function Footer({ style = {}, Language }) {
   const navigate = useNavigate();
 
+  const [pushPermission, setPushPermission] = useState("default");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
