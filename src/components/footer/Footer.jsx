@@ -18,7 +18,6 @@ import { registerPushAnonymous } from "../../utils/registerPush.js";
 function Footer({ style = {}, Language }) {
   const navigate = useNavigate();
 
-  const [pushPermission, setPushPermission] = useState("default");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -111,19 +110,12 @@ function Footer({ style = {}, Language }) {
             target="_blank"
             rel="noreferrer"
           >
-            <FontAwesomeIcon
-              icon={faFacebook}
-              size="2x"
-              color="white"
-            />
+            <FontAwesomeIcon icon={faFacebook} size="2x" color="white" />
           </a>
         </div>
 
         {/* LOGIN / ADMIN */}
-        <div
-          className="login-box"
-          onClick={isLoggedIn ? goToAdmin : goToLogin}
-        >
+        <div className="login-box" onClick={isLoggedIn ? goToAdmin : goToLogin}>
           <p>{isLoggedIn ? lang.panel : lang.login}</p>
         </div>
       </div>
