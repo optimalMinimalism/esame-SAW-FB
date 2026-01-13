@@ -1,7 +1,7 @@
-@import "./globalStyles/global_styles.scss";
+@use "globalStyles/global_styles.scss";
 
 body {
-  font-family: $standard-font-family; /* Replace with your desired font */
+  font-family: global_styles.$standard-font-family; /* Replace with your desired font */
   margin: 0;
   padding: 0;
   width: 100%;

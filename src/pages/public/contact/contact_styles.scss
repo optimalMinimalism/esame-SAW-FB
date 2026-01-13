@@ -1,4 +1,4 @@
-@import "../../../globalStyles/global_styles.scss";
+@use "../../../globalStyles/global_styles.scss";
 
 .contact-root {
   width: 100%;
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $secondary-color-transparent;
+  background-color: global_styles.$secondary-color-transparent;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   color: white;
@@ -57,7 +57,7 @@
 
     h2 {
       text-align: center;
-      color: $primary-color;
+      color: global_styles.$primary-color;
     }
 
     button {
@@ -72,7 +72,7 @@
     margin: 2em auto 2em 2em;
     justify-content: center;
     align-items: center;
-    background-color: $secondary-color-transparent;
+    background-color: global_styles.$secondary-color-transparent;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     color: white;

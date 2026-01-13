@@ -1,9 +1,9 @@
-@import "../../globalStyles/global_styles.scss";
+@use "../../globalStyles/global_styles.scss";
 
 nav {
   box-sizing: border-box;
   width: 100%;
-  height: $nav-height;
+  height: global_styles.$nav-height;
 
   margin-top: 15px;
 

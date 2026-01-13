@@ -1,4 +1,4 @@
-@import "../../../../globalStyles/global_styles.scss";
+@use "../../../../globalStyles/global_styles.scss";
 
 .sermons-root {
   width: 100%;
@@ -36,7 +36,7 @@
       align-items: center;
       text-align: center;
 
-      background-color: $secondary-color-transparent;
+      background-color: global_styles.$secondary-color-transparent;
       border-bottom: 1px solid black;
       border-right: 1px solid black;
       color: white;

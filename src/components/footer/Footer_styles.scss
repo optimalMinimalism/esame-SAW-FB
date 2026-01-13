@@ -1,9 +1,9 @@
-@import "../../globalStyles/global_styles.scss";
+@use "../../globalStyles/global_styles.scss";
 
 footer {
   box-sizing: border-box;
   width: 100%;
-  height: $footer-height;
+  height: global_styles.$footer-height;
   padding: 0 2.5em 0 1em;
   position: static;
   bottom: 0;
@@ -13,7 +13,7 @@ footer {
   justify-content: center;
   // gap: 2em;
 
-  background-color: $primary-color;
+  background-color: global_styles.$primary-color;
   color: white;
 
   .lcms-box {
@@ -42,7 +42,7 @@ footer {
 
     h3 {
       font-size: 1.4em;
-      color: $evident-color;
+      color: global_styles.$evident-color;
     }
 
     .footer-title-box {
@@ -64,7 +64,7 @@ footer {
     }
 
     .copyright {
-      color: $stealth-color;
+      color: global_styles.$stealth-color;
     }
   }
 
@@ -82,7 +82,7 @@ footer {
       display: flex;
       align-items: center;
 
-      color: $stealth-color;
+      color: global_styles.$stealth-color;
       text-decoration: underline;
       p {
         cursor: pointer;
