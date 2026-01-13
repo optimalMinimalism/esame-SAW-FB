@@ -53,30 +53,42 @@ function CreateEvent_page({ language, setLanguage }) {
   }, []);
 
   async function fetchEvents() {
-    const q = query(collection(db, "events"), orderBy("date", "desc"));
-    const snap = await getDocs(q);
-    setEvents(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    try {
+      const q = query(collection(db, "events"), orderBy("date", "desc"));
+      const snap = await getDocs(q);
+      setEvents(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    } catch (err) {
+      console.error("Error fetching events:", err);
+    }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await addDoc(collection(db, "events"), {
-      name,
-      date: Timestamp.fromDate(new Date(date)),
-      createdAt: serverTimestamp(),
-    });
+    try {
+      await addDoc(collection(db, "events"), {
+        name,
+        date: Timestamp.fromDate(new Date(date)),
+        createdAt: serverTimestamp(),
+      });
 
-    setName("");
-    setDate("");
-    fetchEvents();
+      setName("");
+      setDate("");
+      fetchEvents();
+    } catch (err) {
+      console.error("Error creating event:", err);
+    }
   }
 
   async function deleteEvent(id) {
-    if (!window.confirm(t.confirm)) return;
+    try {
+      if (!window.confirm(t.confirm)) return;
 
-    await deleteDoc(doc(db, "events", id));
-    setEvents((prev) => prev.filter((e) => e.id !== id));
+      await deleteDoc(doc(db, "events", id));
+      setEvents((prev) => prev.filter((e) => e.id !== id));
+    } catch (err) {
+      console.error("Error deleting event:", err);
+    }
   }
 
   const navigate = useNavigate();

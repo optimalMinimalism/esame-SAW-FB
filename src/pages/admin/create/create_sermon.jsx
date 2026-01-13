@@ -59,35 +59,46 @@ function CreateSermon_page({ language, setLanguage }) {
   }, []);
 
   async function fetchSermons() {
-    const q = query(collection(db, "sermons"), orderBy("date", "desc"));
-    const snap = await getDocs(q);
-    setSermons(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    try {
+      const q = query(collection(db, "sermons"), orderBy("date", "desc"));
+      const snap = await getDocs(q);
+      setSermons(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    } catch (err) {
+      console.error("Error fetching sermons:", err);
+    }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("SUBMIT FIRED");
 
-    await addDoc(collection(db, "sermons"), {
-      title,
-      date: Timestamp.fromDate(new Date(date)),
-      videoUrl,
-      docUrl,
-      createdAt: serverTimestamp(),
-    });
+    try {
+      await addDoc(collection(db, "sermons"), {
+        title,
+        date: Timestamp.fromDate(new Date(date)),
+        videoUrl,
+        docUrl,
+        createdAt: serverTimestamp(),
+      });
 
-    setTitle("");
-    setDate("");
-    setVideoUrl("");
-    setDocUrl("");
-    fetchSermons();
+      setTitle("");
+      setDate("");
+      setVideoUrl("");
+      setDocUrl("");
+      fetchSermons();
+    } catch (err) {
+      console.error("Error creating sermon:", err);
+    }
   }
 
   async function deleteSermon(id) {
-    if (!window.confirm(t.confirm)) return;
+    try {
+      if (!window.confirm(t.confirm)) return;
 
-    await deleteDoc(doc(db, "sermons", id));
-    setSermons((prev) => prev.filter((s) => s.id !== id));
+      await deleteDoc(doc(db, "sermons", id));
+      setSermons((prev) => prev.filter((s) => s.id !== id));
+    } catch (err) {
+      console.error("Error deleting sermon:", err);
+    }
   }
 
   const navigate = useNavigate();
